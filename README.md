@@ -95,11 +95,3 @@ docker run -p 5000:5000 arima-flask-api
 This is a small applied prototype rather than a production forecasting platform.
 
 The current API is intentionally simple and assumes the serialized model and expected input format are already compatible with the forecasting task.
-
-## Suggested Next Improvements
-
-- validate request payloads more strictly
-- document the training data and forecast horizon assumptions
-- add example tests for the `/predict` endpoint
-- expose clearer model metadata in the API response
-- add a proper WSGI server configuration for deployment
