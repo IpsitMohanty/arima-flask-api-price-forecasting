@@ -38,13 +38,14 @@ It includes:
   Simple health / welcome response.
 
 - `POST /predict`
-  Accepts JSON containing input price values and returns forecast output from the pre-trained model.
+  Accepts a `steps` integer and returns that many forecast periods from the pre-trained model.
+  `steps` must be between 1 and 365.
 
 ## Example Request
 
 ```json
 {
-  "price": [100, 102, 101, 105]
+  "steps": 4
 }
 ```
 
@@ -52,11 +53,20 @@ It includes:
 
 ```json
 {
+  "steps": 4,
   "prediction": [106.2, 106.8, 107.1, 107.4]
 }
 ```
 
-Example values above illustrate the shape of the response.
+The ARIMA model forecasts forward from its training end-date. `steps` controls how many future periods to return.
+
+## Debug Mode
+
+Debug mode is off by default. To enable it locally:
+
+```bash
+FLASK_DEBUG=true python app.py
+```
 
 ## Running Locally
 
